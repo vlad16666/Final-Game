@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Игра</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<style>
+		.vlevo{
+			left:15%;
+			top:60%;
+			height: 250px;
+			width: 270px;
+			background: green;
+			position: absolute;
+			background-image: url(fizc.jpg);
+			background-size: 100% 100%;
+		}
+		.vpravo{
+			left: 70%;
+			top: 60%;
+			height: 250px;
+			width: 270px;
+			background: green;
+			position: absolute;
+			background-image: url(geogr.jpg);
+			background-size: 100% 100%;
+		}
+		.center{
+			left: 43%;
+			top: 45%;
+			height: 250px;
+			width: 270px;
+			background: green;
+			position: absolute;
+			background-image: url(fizic.jpeg);
+			background-size: 100% 100%;
+		}
+		.location1{
+			background: red;
+			height: 937px;
+			width: 1920px;
+			display: none;
+		}
+		.location2{
+			background: green;
+			height: 937px;
+			width: 1920px;
+			display: none;
+		}
+		.location3{
+			background: blue;
+			height: 937px;
+			width: 1920px;
+			display: none;
+		}
+		.circle{
+			height: 95px;
+			width: 95px;
+			position: absolute;
+		}
+		.pos{
+			position: absolute;
+			height: 75px;
+			width: 75px;
+		}
+		.bb{
+			background-image: url(school.jpg);
+		}
+		.main{
+			display: none;
+		}
+		.start{
+			height: 100px;
+			width: 160px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 450px;
+		}
+		.letter{
+			display: none;
+			height: 200px;
+			width: 460px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 450px;
+			background:white;
+		}
+		.winnt{
+			height: 937px;
+			width: 1920px;
+			display: none;
+			background-size: 100% 100%;
+			background-image: url(youwin.png);
+		}
+	</style>
+</head>
+<body class="bb">
+	<div class="start">
+		<button class="btn btn-danger btnst"><h1>Start</h1></button>
+	</div>
+	<div class="letter">
+		<h3 style=" font-family: cursive;">Хэй парень , скоро конец года , а ты все ещё не сдал долги по географии, физике и физ-ре, ну разве так можно? Давай пройдем игру и исправим оценки перед выдачей аттестата)</h3>
+		<button class="btn btn-success ok"><h5>OK</h5></button>
+	</div>
+	<div class="winnt"></div>
+	<div class="main">
+			<div class="zadachi" style="height: 150px; width: 250px;">
+				<h5 class="fizc" style="color: white; font-family: cursive;">Физкультура</h5>
+				<h5 class="fizic" style="color: white; font-family: cursive;">Физика</h5>
+				<h5 class="geogr" style="color: white; font-family: cursive;">География</h5>
+				<h5 style="color: white; font-family: cursive;">Посещенные уроки:<span class="scoresc"></span></h5>
+			</div>
+
+			<div class="vlevo" style="border-radius: 25px;">
+				<h1 style="color: #27e8b1; font-family: cursive;">Физ-ра</h1>
+			</div>
+
+			<div class="vpravo" style="border-radius: 25px;">
+				<h1 style="color: #3f9681; font-family: cursive;">География</h1>
+			</div>
+
+			<div class="center" style="border-radius: 25px;">
+				<h1 style="color: #ffcd05; font-family: cursive;">Физика</h1>
+			</div>
+
+			<div class="location1" style="background-image: url(zal.jpg); background-size: 100% 100%;">
+				<h1 style="color: red;">Осталось <span class="timetxt"></span> сек</h1>
+			</div>
+
+			<div class="location2" style="background-image: url(fon.jpg); background-size: 100% 100%;">
+				<div class="a">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>E=</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px; background-image: url(fon2.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning nepr" style="height: 50px;"><h1>mc</h1></div>
+						<div class=" col-12 border border-warning pr" style="height: 50px;"><h1>mc2</h1></div>
+						<div class=" col-12 border border-warning nepr" style="height: 50px;"><h1>m2c</h1></div>
+					</div>
+				</div>
+				<div class="b" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Кто открыл силу тяготения?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px; background-image: url(fon3.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning prb" style="height: 50px;"><h1>Ньютон</h1></div>
+						<div class=" col-12 border border-warning neprb" style="height: 50px;"><h1>Эйнштейн</h1></div>
+						<div class=" col-12 border border-warning neprb" style="height: 50px;"><h1>Пенроуз</h1></div>
+					</div>
+				</div>
+				<div class="c" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Кто открыл формулу E=mc2?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px; background-image: url(fon4.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning neprc" style="height: 50px;"><h1>Хокинг</h1></div>
+						<div class=" col-12 border border-warning neprc" style="height: 50px;"><h1>Ньютон</h1></div>
+						<div class=" col-12 border border-warning prc" style="height: 50px;"><h1>Эйнштейн</h1></div>
+					</div>
+				</div>
+				<div class="d" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Кто пытался найти формулу всего?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px; background-image: url(fon5.jpeg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning prd" style="height: 50px;"><h1>Хокинг</h1></div>
+						<div class=" col-12 border border-warning neprd" style="height: 50px;"><h1>Пенроуз</h1></div>
+						<div class=" col-12 border border-warning neprd" style="height: 50px;"><h1>Ньютон</h1></div>
+					</div>
+				</div>
+				<div class="e" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Кто изображен на фото?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px; background-image: url(fon6.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning pre" style="height: 50px;"><h1>Стивен Хокинг</h1></div>
+						<div class=" col-12 border border-warning nepre" style="height: 50px;"><h1>Альберт Эйнштейн</h1></div>
+						<div class=" col-12 border border-warning nepre" style="height: 50px;"><h1>Шелдон Купер</h1></div>
+					</div>
+				</div>
+				<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0 f" style="display: none; height:700px; ">
+					<h1 class="tstsc"></h1>
+				</div>
+			</div>
+
+			<div class="location3" style="background-image: url(space.jpg); background-size: 100% 100%;">
+				<div class="g">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Сколько штатов в США?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px;background-image: url(flag.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning neprg" style="height: 50px;"><h1>50</h1></div>
+						<div class=" col-12 border border-warning prg" style="height: 50px;"><h1>51</h1></div>
+						<div class=" col-12 border border-warning neprg" style="height: 50px;"><h1>47</h1></div>
+					</div>
+				</div>
+				<div class="h" style="display: none; ">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Кто открыл Америку?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px;background-image: url(am.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning prh" style="height: 50px;"><h1>Христофор Колумб</h1></div>
+						<div class=" col-12 border border-warning neprh" style="height: 50px;"><h1>Петр Бекетов</h1></div>
+						<div class=" col-12 border border-warning neprh" style="height: 50px;"><h1>Фернан Магеллан</h1></div>
+					</div>
+				</div>
+				<div class="k" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Какая самая большая страна по населению?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px;background-image: url(asia.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning neprk" style="height: 50px;"><h1>Индия</h1></div>
+						<div class=" col-12 border border-warning neprk" style="height: 50px;"><h1>Америка</h1></div>
+						<div class=" col-12 border border-warning prk" style="height: 50px;"><h1>Китай</h1></div>
+					</div>
+				</div>
+				<div class="l" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Какая самая маленькая страна по площади?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px;background-image: url(vat.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning prl" style="height: 50px;"><h1>Ватикан</h1></div>
+						<div class=" col-12 border border-warning neprl" style="height: 50px;"><h1>Чехия</h1></div>
+						<div class=" col-12 border border-warning neprl" style="height: 50px;"><h1>Монако</h1></div>
+					</div>
+				</div>
+				<div class="m" style="display: none;">
+					<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0" style="height: 700px;">
+						<div class="bg-light col-12 border border-warning" style="height: 50px;"><h1>Откуда это фото?</h1></div>
+						<div class="bg-light col-12 border border-secondary" style="height: 500px;background-image: url(avstr.jpg); background-size: 100% 100%;"></div>
+						<div class=" col-12 border border-warning prm" style="height: 50px;"><h1>Австралия</h1></div>
+						<div class=" col-12 border border-warning neprm" style="height: 50px;"><h1>Венгрия</h1></div>
+						<div class=" col-12 border border-warning neprm" style="height: 50px;"><h1>Мадагаскар</h1></div>
+					</div>
+				</div>
+				<div class="col-7 bg-white ml-auto mr-auto pr-0 pl-0 n" style="display: none; height:700px; ">
+					<h1 class="tstsc2"></h1>
+				</div>
+			</div>
+	</div>
+		
+
+	
+	<script type="text/javascript">
+		let vlevo = document.querySelector(".vlevo");
+		let vpravo = document.querySelector(".vpravo");
+		let center = document.querySelector(".center");
+		let zadachi = document.querySelector(".zadachi");
+		let body = document.querySelector("body");
+		let main = document.querySelector(".main");
+		let loc1 = document.querySelector(".location1"); 
+		let loc2 = document.querySelector(".location2"); 
+		let loc3 = document.querySelector(".location3"); 
+		let circle = document.querySelectorAll(".circle");
+		let score = 0;
+		let scorez = 0;
+		let scoresc = document.querySelector(".scoresc");
+		let pr = document.querySelector(".pr");
+		let nepr = document.querySelectorAll(".nepr");
+		let prb = document.querySelector(".prb");
+		let neprb = document.querySelectorAll(".neprb");
+		let prc = document.querySelector(".prc");
+		let neprc = document.querySelectorAll(".neprc");
+		let prd = document.querySelector(".prd");
+		let neprd = document.querySelectorAll(".neprd");
+		let pre = document.querySelector(".pre");
+		let nepre = document.querySelectorAll(".nepre");
+		let tst = 0;
+		let a = document.querySelector(".a");
+		let b = document.querySelector(".b");
+		let c = document.querySelector(".c");
+		let d = document.querySelector(".d");
+		let e = document.querySelector(".e");
+		let f = document.querySelector(".f");
+
+		let prg = document.querySelector(".prg");
+		let neprg = document.querySelectorAll(".neprg");
+		let prh = document.querySelector(".prh");
+		let neprh = document.querySelectorAll(".neprh");
+		let prk = document.querySelector(".prk");
+		let neprk = document.querySelectorAll(".neprk");
+		let prl = document.querySelector(".prl");
+		let neprl = document.querySelectorAll(".neprl");
+		let prm = document.querySelector(".prm");
+		let neprm = document.querySelectorAll(".neprm");
+		let g = document.querySelector(".g");
+		let h = document.querySelector(".h");
+		let k = document.querySelector(".k");
+		let l = document.querySelector(".l");
+		let m = document.querySelector(".m");
+		let n = document.querySelector(".n");
+		let tstsc= document.querySelector(".tstsc");
+		let tstsc2 = document.querySelector(".tstsc2");
+		let tst2 = 0;
+		let time = 10;
+		let timetxt = document.querySelector(".timetxt");
+		let circlech = 0;
+		let btnst = document.querySelector(".btnst");
+		let start = document.querySelector(".start");
+		let ok = document.querySelector(".ok");
+		let letter = document.querySelector(".letter");
+		let winnt = document.querySelector(".winnt");
+		btnst.onclick = function(){
+			start.style.display = "none";
+			letter.style.display = "block";
+		}
+		ok.onclick = function(){
+			letter.style.display = "none";
+			main.style.display = "block";
+			alert("Посети все уроки и исправь оценки , ты ведь собираешься поступать.")
+		}
+		vlevo.onclick = function(){
+			//это 1 локация физра
+			vlevo.style.display = "none";
+			vpravo.style.display = "none";
+			center.style.display = "none";
+			zadachi.style.display = "none";
+			loc1.style.display = "block";
+			timetxt.innerHTML = time;
+			let txt = function(){
+				alert("Поймай хотя бы 7 мячей за 10 секунд");
+			}
+			let timesec = function(){
+				time--;
+				timetxt.innerHTML = time;
+				if (time == 0) {
+					alert("Ты проиграл")
+					clearInterval(timestp);
+					clearInterval(stp);
+					let nev = function(){
+						vlevo.style.display = "block";
+						vpravo.style.display = "block";
+						center.style.display = "block";
+						zadachi.style.display = "block";
+						loc1.style.display = "none";
+					}
+					setTimeout(nev,2000);
+				}
+			}
+			setTimeout(txt,500);
+			let timestp = setInterval(timesec,1000);
+		let randomLeft = function(){
+			let rand = Math.random() * 1500;
+			let round = Math.round(rand);
+			return round;
+		}
+		let randomTop = function(){
+			let rand = Math.random() * 800;
+			let round = Math.round(rand);
+			return round;
+		}
+		let createPoint = function(){
+			//создание картинки
+			circlech++;
+			let point = document.createElement("div");
+			document.body.appendChild(point);
+			point.classList.add("pos","rounded-circle", "circle","check");
+			point.style.left = randomLeft() + "px";
+			point.style.top = randomTop() + "px";
+			point.style.backgroundImage = "url(basket.png)";
+			point.style.backgroundSize = "100% 100%";
+			//клик на картинку
+			point.onclick = function(){
+				score++;
+				point.style.display = "none";
+				if (score == 7) {
+					alert("Поздравляю ты поймал 7 мячей");
+					scorez++;
+					scoresc.innerHTML = scorez;
+					document.querySelector(".fizc").style.textDecoration = "line-through";
+					setTimeout(nev,2000);
+					clearInterval(timestp);
+					clearInterval(stp);	
+				}
+					
+			}
+			let nev = function(){
+						vlevo.style.display = "block";
+						vpravo.style.display = "block";
+						center.style.display = "block";
+						zadachi.style.display = "block";
+						loc1.style.display = "none";
+			}
+		}
+			let stp = setInterval(createPoint,1000);
+		}
+		center.onclick = function(){
+			//это 2 локация физика
+			vlevo.style.display = "none";
+			vpravo.style.display = "none";
+			center.style.display = "none";
+			zadachi.style.display = "none";
+			loc2.style.display = "block";
+			let txt = function(){
+				alert("Реши тест хотябы на 4 из 5 , чтобы получить пятерку");
+			}
+			setTimeout(txt,500);
+			pr.onclick = function(){
+				pr.style.background = "green";
+				tst++;
+				a.style.display = "none";
+				b.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				nepr[i].onclick = function(){
+					nepr[i].style.background = "red";
+					a.style.display = "none";
+					b.style.display = "block";
+				}
+			}
+			prb.onclick = function(){
+				prb.style.background = "green";
+				tst++;
+				b.style.display = "none";
+				c.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprb[i].onclick = function(){
+					neprb[i].style.background = "red";
+					b.style.display = "none";
+					c.style.display = "block";
+				}
+			}
+			prc.onclick = function(){
+				prc.style.background = "green";
+				tst++;
+				c.style.display = "none";
+				d.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprc[i].onclick = function(){
+					neprc[i].style.background = "red";
+					c.style.display = "none";
+					d.style.display = "block";
+				}
+			}
+			prd.onclick = function(){
+				prd.style.background = "green";
+				tst++;
+				d.style.display = "none";
+				e.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprd[i].onclick = function(){
+					neprd[i].style.background = "red";
+					d.style.display = "none";
+					e.style.display = "block";
+				}
+			}
+			pre.onclick = function(){
+				pre.style.background = "green";
+				tst++;
+				e.style.display = "none";
+				f.style.display = "block";
+				if (tst >= 4) {
+						tstsc.innerHTML = "Поздравляю ты набрал "+ tst + " из 5";
+						document.querySelector(".fizic").style.textDecoration = "line-through";
+						scorez++;
+						scoresc.innerHTML = scorez;
+				}
+				if (tst < 4) {
+						tstsc.innerHTML = "К сожалению ты набрал "+ tst + " из 5";
+				}
+				let locCh = function(){
+					vlevo.style.display = "block";
+					vpravo.style.display = "block";
+					center.style.display = "block";
+					zadachi.style.display = "block";
+					loc2.style.display = "none";
+				}
+				setTimeout(locCh,2000);
+				if (scorez==3) {
+					let winner = function(){
+						main.style.display = "none";
+						winnt.style.display = "block";
+						alert("Поздравляю ты исправил оценки и получил аттестат");
+					}
+					setTimeout(winner,4000);
+				}
+			}
+			for (let i = 0; i < 2; i++) {
+				nepre[i].onclick = function(){
+					nepre[i].style.background = "red";
+					e.style.display = "none";
+					f.style.display = "block";
+					if (tst < 4) {
+						tstsc.innerHTML = "К сожалению ты набрал "+ tst + " из 5";
+					}
+					if (tst >= 4) {
+						tstsc.innerHTML = "Поздравляю ты набрал "+ tst + " из 5";
+						document.querySelector(".fizic").style.textDecoration = "line-through";
+						scorez++;
+						scoresc.innerHTML = scorez;
+					}
+					if (scorez==3) {
+					let winner = function(){
+						main.style.display = "none";
+						winnt.style.display = "block";
+						alert("Поздравляю ты исправил оценки и получил аттестат");
+					}
+					setTimeout(winner,4000);
+				}
+				}
+			}
+		}
+		vpravo.onclick = function(){
+			//это 3 локация география
+			vlevo.style.display = "none";
+			vpravo.style.display = "none";
+			center.style.display = "none";
+			zadachi.style.display = "none";
+			loc3.style.display = "block";
+			let txt = function(){
+				alert("Реши тест хотябы на 4 из 5 , чтобы получить пятерку");
+			}
+			setTimeout(txt,500);
+			prg.onclick = function(){
+				prg.style.background = "green";
+				tst2++;
+				g.style.display = "none";
+				h.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprg[i].onclick = function(){
+					neprg[i].style.background = "red";
+					g.style.display = "none";
+					h.style.display = "block";
+				}
+			}
+			prh.onclick = function(){
+				prh.style.background = "green";
+				tst2++;
+				h.style.display = "none";
+				k.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprh[i].onclick = function(){
+					neprh[i].style.background = "red";
+					h.style.display = "none";
+					k.style.display = "block";
+				}
+			}
+			prk.onclick = function(){
+				prk.style.background = "green";
+				tst2++;
+				k.style.display = "none";
+				l.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprk[i].onclick = function(){
+					neprk[i].style.background = "red";
+					k.style.display = "none";
+					l.style.display = "block";
+				}
+			}
+			prl.onclick = function(){
+				prl.style.background = "green";
+				tst2++;
+				l.style.display = "none";
+				m.style.display = "block";
+			}
+			for (let i = 0; i < 2; i++) {
+				neprl[i].onclick = function(){
+					neprl[i].style.background = "red";
+					l.style.display = "none";
+					m.style.display = "block";
+				}
+			}
+			prm.onclick = function(){
+				prm.style.background = "green";
+				tst2++;
+				m.style.display = "none";
+				n.style.display = "block";
+				if (tst2 >= 4) {
+						tstsc2.innerHTML = "Поздравляю ты набрал "+ tst2 + " из 5";
+						document.querySelector(".geogr").style.textDecoration = "line-through";
+						scorez++;
+						scoresc.innerHTML = scorez;
+				}
+				if (tst2 < 4) {
+						tstsc2.innerHTML = "К сожалению ты набрал "+ tst2 + " из 5";
+				}
+				let locCh = function(){
+					vlevo.style.display = "block";
+					vpravo.style.display = "block";
+					center.style.display = "block";
+					zadachi.style.display = "block";
+					loc3.style.display = "none";
+				}
+				setTimeout(locCh,2000);
+			if (scorez==3) {
+					let winner = function(){
+						main.style.display = "none";
+						winnt.style.display = "block";
+						alert("Поздравляю ты исправил оценки и получил аттестат");
+					}
+					setTimeout(winner,4000);
+				}
+			}
+			for (let i = 0; i < 2; i++) {
+				neprm[i].onclick = function(){
+					neprm[i].style.background = "red";
+					m.style.display = "none";
+					n.style.display = "block";
+					if (tst2 < 4) {
+						tstsc2.innerHTML = "К сожалению ты набрал "+ tst2 + " из 5";
+					}
+					if (tst2 >= 4) {
+						tstsc2.innerHTML = "Поздравляю ты набрал "+ tst2 + " из 5";
+						document.querySelector(".geogr").style.textDecoration = "line-through";
+						scorez++;
+						scoresc.innerHTML = scorez;
+					}
+					if (scorez==3) {
+					let winner = function(){
+						main.style.display = "none";
+						winnt.style.display = "block";
+						alert("Поздравляю ты исправил оценки и получил аттестат");
+					}
+					setTimeout(winner,4000);
+				}
+				}
+			}
+		}
+	</script>
+</body>
+</html>
